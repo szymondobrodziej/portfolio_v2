@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import SectionHeading from '../components/SectionHeading';
 import { socialLinks } from '../constants';
+import emailjs from '@emailjs/browser';
 
 const InputField = ({ icon, type, name, value, onChange, placeholder, disabled }) => (
   <div className="relative">
@@ -59,18 +60,38 @@ const Contact = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState({ type: '', message: '' });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setStatus({ type: '', message: '' });
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setFormData({ name: '', email: '', message: '' });
-      alert('Message sent successfully!');
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      if (result.status === 200) {
+        setStatus({
+          type: 'success',
+          message: t('contact.form.successMessage')
+        });
+        setFormData({ name: '', email: '', message: '' });
+      }
     } catch (error) {
       console.error('Error sending message:', error);
-      alert('Failed to send message. Please try again.');
+      setStatus({
+        type: 'error',
+        message: t('contact.form.errorMessage')
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -104,6 +125,14 @@ const Contact = () => {
                 <span className="material-icons-outlined text-primary-500" aria-hidden="true">mail</span>
                 <h3 className="text-xl font-bold">{t('contact.form.title')}</h3>
               </div>
+
+              {status.message && (
+                <div className={`p-4 rounded-lg ${
+                  status.type === 'success' ? 'bg-green-900/50 text-green-400' : 'bg-red-900/50 text-red-400'
+                }`}>
+                  {status.message}
+                </div>
+              )}
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
@@ -178,42 +207,22 @@ const Contact = () => {
               </form>
             </motion.div>
 
-            {/* Contact Info */}
+            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="space-y-6"
             >
-              {/* Social Links */}
-              <div className="rounded-xl bg-gray-900 p-6 ring-1 ring-gray-800">
-                <div className="mb-4 flex items-center space-x-2 text-gray-300">
-                  <span className="material-icons-outlined text-primary-500" aria-hidden="true">share</span>
-                  <h3 className="text-xl font-bold">{t('contact.connect.title')}</h3>
-                </div>
-                <p className="mb-6 text-gray-400">{t('contact.connect.description')}</p>
-                <div className="space-y-3">
-                  {socialLinks.map((link, index) => (
-                    <SocialLink key={link.name} link={link} index={index} />
-                  ))}
-                </div>
+              <div className="flex items-center space-x-2 text-gray-300">
+                <span className="material-icons-outlined text-primary-500" aria-hidden="true">share</span>
+                <h3 className="text-xl font-bold">{t('contact.social.title')}</h3>
               </div>
 
-              {/* Availability Status */}
-              <div className="rounded-xl bg-gray-900 p-6 ring-1 ring-gray-800">
-                <div className="flex items-center space-x-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-900/20">
-                    <span className="material-icons-outlined text-green-500" aria-hidden="true">schedule</span>
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-300">
-                      {t('contact.availability.status')}
-                    </h3>
-                    <p className="text-sm text-gray-400">
-                      {t('contact.availability.response')}
-                    </p>
-                  </div>
-                </div>
+              <div className="grid gap-4">
+                {socialLinks.map((link, index) => (
+                  <SocialLink key={link.name} link={link} index={index} />
+                ))}
               </div>
             </motion.div>
           </div>

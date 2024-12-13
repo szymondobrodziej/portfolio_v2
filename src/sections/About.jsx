@@ -4,6 +4,7 @@ import SectionHeading from '../components/SectionHeading';
 
 const About = () => {
   const { t } = useLanguage();
+  const baseUrl = import.meta.env.BASE_URL;
 
   const stats = [
     { number: '5+', label: t('about.stats.experience') },
@@ -31,7 +32,7 @@ const About = () => {
           >
             <div className="aspect-square overflow-hidden rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 p-1">
               <img
-                src="/Szymon_Dobrodziej.jpg"
+                src={`${baseUrl}Szymon_Dobrodziej.jpg`}
                 alt="Szymon"
                 className="h-full w-full rounded-full object-cover"
               />

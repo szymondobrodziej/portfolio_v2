@@ -1,3 +1,5 @@
+const BASE_URL = import.meta.env.BASE_URL;
+
 export const translations = {
   en: {
     nav: {
@@ -74,8 +76,8 @@ export const translations = {
             'Automated alerts system'
           ],
           technologies: ['Power BI', 'DAX', 'SQL'],
-          image: '/ddmrp3.jpg',
-          fallbackImage: '/box.jpg'
+          image: `${BASE_URL}ddmrp3.jpg`,
+          fallbackImage: `${BASE_URL}box.jpg`
         },
         {
           title: 'Supply Chain Analytics Platform',
@@ -86,8 +88,8 @@ export const translations = {
             'Performance metrics tracking'
           ],
           technologies: ['Python', 'SQL', 'Tableau'],
-          image: '/graphs.jpg',
-          fallbackImage: '/box.jpg'
+          image: `${BASE_URL}graphs.jpg`,
+          fallbackImage: `${BASE_URL}box.jpg`
         },
         {
           title: 'Inventory Management System',
@@ -98,8 +100,8 @@ export const translations = {
             'Supplier integration'
           ],
           technologies: ['Excel VBA', 'Power Query', 'SQL'],
-          image: '/calculator-papers.jpg',
-          fallbackImage: '/box.jpg'
+          image: `${BASE_URL}calculator-papers.jpg`,
+          fallbackImage: `${BASE_URL}box.jpg`
         }
       ]
     },
@@ -164,7 +166,9 @@ export const translations = {
         message: 'Message',
         messagePlaceholder: 'Write your message here...',
         send: 'Send Message',
-        sending: 'Sending...'
+        sending: 'Sending...',
+        successMessage: 'Thank you! Your message has been sent successfully.',
+        errorMessage: 'Sorry, there was an error sending your message. Please try again.'
       },
       connect: {
         title: 'Connect With Me',
@@ -268,8 +272,8 @@ export const translations = {
             'Zautomatyzowany system alertów'
           ],
           technologies: ['Power BI', 'DAX', 'SQL'],
-          image: '/ddmrp3.jpg',
-          fallbackImage: '/box.jpg'
+          image: `${BASE_URL}ddmrp3.jpg`,
+          fallbackImage: `${BASE_URL}box.jpg`
         },
         {
           title: 'Aplikacja do kompletacji produktów z paczek e-commerce',
@@ -280,8 +284,8 @@ export const translations = {
             'Uwolnienie zasobów'
           ],
           technologies: ['Python', 'SQL', 'Django', 'Next.js'],
-          image: '/graphs.jpg',
-          fallbackImage: '/box.jpg'
+          image: `${BASE_URL}graphs.jpg`,
+          fallbackImage: `${BASE_URL}box.jpg`
         },
         {
           title: 'Analiza roczna',
@@ -294,10 +298,8 @@ export const translations = {
             'Prognozowanie sprzeday za pomocą modeli Phrophet, ARIMA i SARIMA'
           ],
           technologies: ['Excel', 'Python', 'Pandas', 'SQL', 'Openpyxl', 'Seaborn', 'Matplotlib', 'Power BI', 'DAX'],
-          image: '/graphs.jpg',
-          image: '/graphs.jpg',
-          image: '/calculator-papers.jpg',
-          fallbackImage: '/box.jpg'
+          image: `${BASE_URL}calculator-papers.jpg`,
+          fallbackImage: `${BASE_URL}box.jpg`
         }
       ]
     },
@@ -362,10 +364,12 @@ export const translations = {
         message: 'Wiadomość',
         messagePlaceholder: 'Napisz swoją wiadomość...',
         send: 'Wyślij Wiadomość',
-        sending: 'Wysyłanie...'
+        sending: 'Wysyłanie...',
+        successMessage: 'Dziękuję! Twoja wiadomość została wysłana pomyślnie.',
+        errorMessage: 'Przepraszamy, wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.'
       },
       connect: {
-        title: 'Połącz się ze Mną',
+        title: 'Połącz się ze mną',
         description: 'Możesz się ze mną skontaktować przez dowolną z tych platform'
       },
       availability: {
