@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
       <main className="pt-16">{children}</main>
       <footer className="mt-20 bg-gray-50 py-8 dark:bg-gray-800">
         <div className="container-padding mx-auto text-center text-sm text-gray-600 dark:text-gray-400">
-          <p>© {new Date().getFullYear()} Szymon.dev. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} szymon-dobrodziej. All rights reserved.</p>
         </div>
       </footer>
     </div>

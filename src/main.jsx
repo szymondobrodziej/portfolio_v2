@@ -5,7 +5,9 @@ import App from './App.jsx'
 import './styles/globals.css'
 
 // Initialize EmailJS with your public key
-init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+console.log('Initializing EmailJS with key:', publicKey);
+init(publicKey);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

@@ -67,17 +67,35 @@ const Contact = () => {
     setIsSubmitting(true);
     setStatus({ type: '', message: '' });
 
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    console.log('Sending email with:', {
+      serviceId,
+      templateId,
+      formData
+    });
+
     try {
+      const templateParams = {
+        to_name: 'Szymon',
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        reply_to: formData.email,
+      };
+
+      console.log('Template params:', templateParams);
+
       const result = await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
       );
+
+      console.log('EmailJS response:', result);
 
       if (result.status === 200) {
         setStatus({
@@ -87,7 +105,11 @@ const Contact = () => {
         setFormData({ name: '', email: '', message: '' });
       }
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Error details:', {
+        message: error.message,
+        text: error.text,
+        status: error.status
+      });
       setStatus({
         type: 'error',
         message: t('contact.form.errorMessage')

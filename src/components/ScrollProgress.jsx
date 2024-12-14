@@ -26,10 +26,12 @@ const ScrollProgress = () => {
 
   return (
     <>
-      <div className="fixed right-0 top-0 z-40 h-1 w-full bg-gray-200 dark:bg-gray-800">
+      <div className="fixed left-0 top-0 z-50 h-1 w-full bg-gray-200 dark:bg-gray-800">
         <motion.div
           className="h-full bg-primary-500"
           style={{ width: `${scrollProgress}%` }}
+          initial={{ width: "0%" }}
+          animate={{ width: `${scrollProgress}%` }}
           transition={{ duration: 0.1 }}
         />
       </div>
@@ -41,7 +43,7 @@ const ScrollProgress = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-40 flex h-10 w-10 items-center justify-center rounded-full bg-primary-500 text-white shadow-lg transition-colors hover:bg-primary-600"
+            className="fixed bottom-8 right-8 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-primary-500 text-white shadow-lg transition-colors hover:bg-primary-600"
             aria-label="Scroll to top"
           >
             <svg 

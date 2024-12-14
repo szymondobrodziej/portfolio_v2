@@ -135,6 +135,13 @@ export const translations = {
         partial_updates: 'Partial Updates',
         authentication: 'Authentication'
       },
+      error: {
+        title: 'Error Occurred',
+        description: 'Something went wrong during the request',
+        status: 'Error Status',
+        details: 'Error Details',
+        forceError: 'Force Error'
+      },
       steps: {
         request: {
           title: 'Request',
@@ -169,6 +176,10 @@ export const translations = {
         sending: 'Sending...',
         successMessage: 'Thank you! Your message has been sent successfully.',
         errorMessage: 'Sorry, there was an error sending your message. Please try again.'
+      },
+      social: {
+        title: 'Connect With Me',
+        description: 'Feel free to reach out through any of these platforms'
       },
       connect: {
         title: 'Connect With Me',
@@ -333,6 +344,13 @@ export const translations = {
         partial_updates: 'Aktualizacje częściowe',
         authentication: 'Uwierzytelnianie'
       },
+      error: {
+        title: 'Wystąpił Błąd',
+        description: 'Coś poszło nie tak podczas żądania',
+        status: 'Status Błędu',
+        details: 'Szczegóły Błędu',
+        forceError: 'Wymuś Błąd'
+      },
       steps: {
         request: {
           title: 'Żądanie',
@@ -367,6 +385,10 @@ export const translations = {
         sending: 'Wysyłanie...',
         successMessage: 'Dziękuję! Twoja wiadomość została wysłana pomyślnie.',
         errorMessage: 'Przepraszamy, wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.'
+      },
+      social: {
+        title: 'Media Społecznościowe',
+        description: 'Możesz się ze mną skontaktować przez dowolną z tych platform'
       },
       connect: {
         title: 'Połącz się ze mną',

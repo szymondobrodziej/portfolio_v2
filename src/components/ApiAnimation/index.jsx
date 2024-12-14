@@ -54,18 +54,18 @@ const ApiAnimation = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gray-900 text-white p-4">
+    <div className="w-full min-h-screen bg-gray-900 text-white p-2 sm:p-4">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col lg:flex-row gap-4">
           {/* Control Panel */}
-          <div className="md:w-1/4 bg-gray-800 p-4 rounded-lg">
-            <h3 className="text-xl font-bold mb-4">{translate('apiAnimation.currentRequest')}</h3>
-            <div className="grid grid-cols-2 gap-2 mb-4">
+          <div className="lg:w-1/4 bg-gray-800 p-3 sm:p-4 rounded-lg">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">{translate('apiAnimation.currentRequest')}</h3>
+            <div className="grid grid-cols-2 gap-2 mb-3 sm:mb-4">
               {requestTypes.map((type) => (
                 <button
                   key={type}
                   onClick={() => handleRequestChange(type)}
-                  className={`p-2 rounded ${
+                  className={`p-1.5 sm:p-2 text-sm sm:text-base rounded ${
                     currentRequest === type ? 'bg-blue-600' : 'bg-gray-700'
                   } hover:bg-blue-500 transition-colors`}
                   style={{
@@ -77,28 +77,28 @@ const ApiAnimation = () => {
                 </button>
               ))}
             </div>
-            <div className="flex gap-2 mb-4">
+            <div className="flex gap-2 mb-3 sm:mb-4">
               <button
                 onClick={togglePlay}
-                className="flex-1 flex items-center justify-center gap-2 bg-gray-700 p-2 rounded hover:bg-gray-600"
+                className="flex-1 flex items-center justify-center gap-1 sm:gap-2 bg-gray-700 p-1.5 sm:p-2 rounded hover:bg-gray-600 text-sm sm:text-base"
               >
-                {isPlaying ? <FaPause /> : <FaPlay />}
-                {translate(isPlaying ? 'apiAnimation.pause' : 'apiAnimation.play')}
+                {isPlaying ? <FaPause className="text-sm sm:text-base" /> : <FaPlay className="text-sm sm:text-base" />}
+                <span className="hidden sm:inline">{translate(isPlaying ? 'apiAnimation.pause' : 'apiAnimation.play')}</span>
               </button>
               <button
                 onClick={toggleError}
-                className={`flex-1 flex items-center justify-center gap-2 p-2 rounded ${
+                className={`flex-1 flex items-center justify-center gap-1 sm:gap-2 p-1.5 sm:p-2 rounded text-sm sm:text-base ${
                   forceError ? 'bg-red-600' : 'bg-gray-700'
                 } hover:bg-red-500`}
               >
-                <FaExclamationTriangle />
-                {translate('apiAnimation.forceError')}
+                <FaExclamationTriangle className="text-sm sm:text-base" />
+                <span className="hidden sm:inline">{translate('animation.error.forceError')}</span>
               </button>
             </div>
           </div>
 
           {/* Main Animation Area */}
-          <div className="md:w-3/4 bg-gray-800 p-4 rounded-lg">
+          <div className="lg:w-3/4 bg-gray-800 p-3 sm:p-4 rounded-lg">
             <div className="flex justify-between items-center mb-8">
               <div className="flex items-center gap-2">
                 <FaDesktop className="text-2xl" />
@@ -120,8 +120,8 @@ const ApiAnimation = () => {
         </div>
 
         {/* Challenges Section */}
-        <div className="mt-8 bg-gray-800 p-4 rounded-lg">
-          <h3 className="text-xl font-bold mb-4">
+        <div className="mt-8 bg-gray-800 p-3 sm:p-4 rounded-lg">
+          <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
             {translate('apiAnimation.commonChallenges')}
           </h3>
           <motion.div

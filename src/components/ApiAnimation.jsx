@@ -414,7 +414,7 @@ const ApiAnimation = () => {
                     : 'bg-green-100 text-green-600 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-400'
                 }`}
               >
-                {showError ? t('animation.forceError') : t('animation.success')}
+                {showError ? t('animation.error.forceError') : t('animation.success')}
               </motion.button>
               
               <motion.button

@@ -11,7 +11,7 @@ const DataFlow = ({ isPlaying, showError, isProcessing }) => {
     animate: {
       pathLength: 1,
       transition: {
-        duration: 2,
+        duration: isPlaying ? 2 : 0,
         ease: "easeInOut",
         repeat: Infinity,
         repeatType: "reverse",
@@ -26,7 +26,7 @@ const DataFlow = ({ isPlaying, showError, isProcessing }) => {
       scale: [1, 0.8, 0.8, 1],
       opacity: [1, 0.6, 0.6, 1],
       transition: {
-        duration: 4,
+        duration: isPlaying ? 4 : 0,
         ease: "linear",
         repeat: Infinity,
         times: [0, 0.4, 0.6, 1]
@@ -38,7 +38,7 @@ const DataFlow = ({ isPlaying, showError, isProcessing }) => {
     initial: { x: '0%', y: 0, scale: 1, opacity: 1, background: 'transparent' },
     animate: {
       x: ['0%', '50%', '50%', '0%'],
-      y: [0, -20, 20, 0],
+      y: [0, -10, 10, 0],
       scale: [1, 0.8, 0.8, 1],
       opacity: [1, 0.6, 0.6, 0],
       background: [
@@ -48,7 +48,7 @@ const DataFlow = ({ isPlaying, showError, isProcessing }) => {
         'radial-gradient(circle, transparent 0%, transparent 0%)'
       ],
       transition: {
-        duration: 2,
+        duration: isPlaying ? 2 : 0,
         ease: "easeInOut",
         repeat: Infinity
       }
@@ -58,9 +58,9 @@ const DataFlow = ({ isPlaying, showError, isProcessing }) => {
   const serverIconVariants = {
     initial: { scale: 1 },
     processing: {
-      scale: [1, 1.1, 1],
+      scale: [1, 1.05, 1],
       transition: {
-        duration: 1,
+        duration: isPlaying ? 1 : 0,
         repeat: Infinity
       }
     }
@@ -82,7 +82,7 @@ const DataFlow = ({ isPlaying, showError, isProcessing }) => {
         'radial-gradient(circle, transparent 0%, transparent 0%)'
       ],
       transition: {
-        duration: 2,
+        duration: isPlaying ? 2 : 0,
         ease: "easeInOut",
         repeat: Infinity,
         repeatType: "reverse"
@@ -91,11 +91,12 @@ const DataFlow = ({ isPlaying, showError, isProcessing }) => {
   };
 
   return (
-    <div className="relative h-60 w-full overflow-hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-700/50">
+    <div className="relative h-40 sm:h-60 w-full overflow-hidden rounded-lg bg-gray-50 p-2 sm:p-4 dark:bg-gray-700/50">
       {/* Connection Lines */}
       <svg
         className="absolute h-full w-full"
         viewBox="0 0 800 200"
+        preserveAspectRatio="xMidYMid meet"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
